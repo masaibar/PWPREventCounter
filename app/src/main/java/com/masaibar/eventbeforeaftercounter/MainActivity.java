@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         new GetJSONAsyncTask(JSON_URL, this).execute();
-
-        //データ埋めるのは多分非同期だね
-        setHighSchoolSpinner();
     }
 
     @Override
@@ -109,11 +106,13 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void setHighSchoolSpinner() {
+    private void setHighSchoolSpinner(List<HighSchool> highSchools) {
         Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item);
-        adapter.add("hoge");
-        adapter.add("fuga");
+        for(HighSchool hs : highSchools) {
+            String name = hs.getName();
+            adapter.add(name);
+        }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerHighSchool.setAdapter(adapter);
     }
@@ -163,6 +162,8 @@ public class MainActivity extends AppCompatActivity
                 DebugUtil.log("highschool = %s, isLimited = %s, b = %s, a = %s",
                         highSchool.getName(), highSchool.isLimited(), highSchool.getBeforeEvents(), highSchool.getAfterEvents());
             }
+
+            setHighSchoolSpinner(highSchools);
         }
     }
 }

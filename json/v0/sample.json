@@ -11,6 +11,18 @@
       "is_limited": true,
       "before_events": 32,
       "after_events": 41
+    },
+    {
+      "name": "瞬鋭高校",
+      "is_limited": false,
+      "before_events": 35,
+      "after_events": 43
+    },
+    {
+      "name": "瞬鋭高校",
+      "is_limited": true,
+      "before_events": 36,
+      "after_events": 39
     }
   ],
   "characters": [
