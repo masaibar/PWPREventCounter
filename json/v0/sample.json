@@ -23,14 +23,14 @@
   ],
   "characters": [
     {
-      "name": "猪狩守",
-      "rarity": "sr",
+      "name": "矢部明雄(SR)",
+      "rarity": "SR",
       "before_events": 0,
       "after_events": 4
     },
     {
-      "name": "猪狩進",
-      "rarity": "sr",
+      "name": "阿畑やすし(SR)",
+      "rarity": "SR",
       "before_events": 5,
       "after_events": 0
     }
