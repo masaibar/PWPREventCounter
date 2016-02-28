@@ -12,12 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
+import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
 import com.masaibar.eventbeforeaftercounter.util.StringUtil;
 
 import java.net.URL;
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 DebugUtil.log("selected = %s", spinnerHighSchool.getSelectedItem());
+                int index = spinnerHighSchool.getChildCount();
                 textResult.setText(getString(R.string.result_tmp, spinnerHighSchool.getSelectedItem(),0, 0));
             }
         });
@@ -124,14 +125,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setHighSchoolSpinner(Spinner spinner, List<HighSchool> highSchools) {
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item);
-        for(HighSchool hs : highSchools) {
-            StringBuilder name = new StringBuilder(hs.getName());
-            if (hs.isLimited()) { //フラグを見て期間限定なら末尾に追記
-                name.append(getString(R.string.limited_route));
-            }
-            adapter.add(name);
-        }
+        HighSchoolAdapter adapter = new HighSchoolAdapter(this, android.R.layout.simple_spinner_item, highSchools);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
