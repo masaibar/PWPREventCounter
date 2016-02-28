@@ -7,9 +7,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public class HighSchool {
 
-    @SerializedName("id")
-    private int mId;
-
     @SerializedName("name")
     private String mName;
 
@@ -19,15 +16,10 @@ public class HighSchool {
     @SerializedName("after_events")
     private int mAfterEvents;
 
-    public HighSchool(int id, String name, int beforeEvents, int afterEvents) {
-        mId = id;
+    public HighSchool(String name, int beforeEvents, int afterEvents) {
         mName = name;
         mBeforeEvents = beforeEvents;
         mAfterEvents = afterEvents;
-    }
-
-    public int getId() {
-        return mId;
     }
 
     public String getName() {
@@ -44,6 +36,7 @@ public class HighSchool {
 
     @Override
     public String toString() {
-        return mName;
+        return String.format("name = %s, beforeEvents = %s, afterEvents = %s",
+                mName, String.valueOf(mBeforeEvents), String.valueOf(mAfterEvents));
     }
 }

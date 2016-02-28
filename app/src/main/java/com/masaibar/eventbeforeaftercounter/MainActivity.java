@@ -59,9 +59,8 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.button_judge).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DebugUtil.log("selected = %s", spinnerHighSchool.getSelectedItem());
-                int index = spinnerHighSchool.getChildCount();
-                textResult.setText(getString(R.string.result_tmp, spinnerHighSchool.getSelectedItem(), 0, 0));
+                HighSchool hs = (HighSchool) spinnerHighSchool.getSelectedItem();
+                textResult.setText(getString(R.string.result_tmp, hs.getName(), hs.getBeforeEvents(), hs.getAfterEvents()));
             }
         });
 
