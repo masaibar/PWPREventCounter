@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setHighSchoolSpinner();
     }
 
     @Override
@@ -86,5 +90,14 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setHighSchoolSpinner() {
+        Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item);
+        adapter.add("hoge");
+        adapter.add("fuga");
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerHighSchool.setAdapter(adapter);
     }
 }
