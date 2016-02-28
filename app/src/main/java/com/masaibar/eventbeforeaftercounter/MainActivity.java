@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 DebugUtil.log("selected = %s", spinnerHighSchool.getSelectedItem());
                 int index = spinnerHighSchool.getChildCount();
-                textResult.setText(getString(R.string.result_tmp, spinnerHighSchool.getSelectedItem(),0, 0));
+                textResult.setText(getString(R.string.result_tmp, spinnerHighSchool.getSelectedItem(), 0, 0));
             }
         });
 
@@ -173,9 +173,9 @@ public class MainActivity extends AppCompatActivity
 
             List<HighSchool> highSchools = jsonData.getHighSchools();
 
-            for(HighSchool highSchool : highSchools) {
-                DebugUtil.log("highschool = %s, isLimited = %s, b = %s, a = %s",
-                        highSchool.getName(), highSchool.isLimited(), highSchool.getBeforeEvents(), highSchool.getAfterEvents());
+            for (HighSchool highSchool : highSchools) {
+                DebugUtil.log("highschool = %s, b = %s, a = %s",
+                        highSchool.getName(), highSchool.getBeforeEvents(), highSchool.getAfterEvents());
             }
 
             setHighSchoolSpinner(mSpinnerHighSchool, highSchools);

@@ -1,42 +1,38 @@
 {
-  "high_schools": [
-    {
-      "name": "パワフル高校",
-      "is_limited": false,
-      "before_events": 31,
-      "after_events": 39
-    },
-    {
-      "name": "パワフル高校",
-      "is_limited": true,
-      "before_events": 32,
-      "after_events": 41
-    },
-    {
-      "name": "瞬鋭高校",
-      "is_limited": false,
-      "before_events": 35,
-      "after_events": 43
-    },
-    {
-      "name": "瞬鋭高校",
-      "is_limited": true,
-      "before_events": 36,
-      "after_events": 39
-    }
-  ],
-  "characters": [
-    {
-      "name": "猪狩守",
-      "rarity": "sr",
-      "before_events": 0,
-      "after_events": 4
-    },
-    {
-      "name": "猪狩進",
-      "rarity": "sr",
-      "before_events": 5,
-      "after_events": 0
-    }
-  ]
+	"high_schools":  [
+	{
+		"name":  "パワフル高校", 
+			"before_events":  31, 
+			"after_events":  39
+	}, 
+	{
+		"name":  "パワフル高校(限定)", 
+		"before_events":  32, 
+		"after_events":  41
+	}, 
+	{
+		"name":  "瞬鋭高校", 
+		"before_events":  35, 
+		"after_events":  43
+	}, 
+	{
+		"name":  "瞬鋭高校(限定)", 
+		"before_events":  36, 
+		"after_events":  39
+	}
+	], 
+		"characters":  [
+		{
+			"name":  "猪狩守", 
+			"rarity":  "sr", 
+			"before_events":  0, 
+			"after_events":  4
+		}, 
+		{
+			"name":  "猪狩進", 
+			"rarity":  "sr", 
+			"before_events":  5, 
+			"after_events":  0
+		}
+	]
 }

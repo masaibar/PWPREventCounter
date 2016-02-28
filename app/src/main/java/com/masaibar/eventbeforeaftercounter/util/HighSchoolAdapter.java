@@ -44,11 +44,7 @@ public class HighSchoolAdapter extends ArrayAdapter<HighSchool>{
 
         if(label != null) {
             HighSchool hs = getItem(position);
-            StringBuilder name = new StringBuilder(hs.getName());
-            if (hs.isLimited()) { //フラグを見て期間限定なら末尾に追記
-                name.append(context.getString(R.string.limited_route));
-            }
-            label.setText(name);
+            label.setText(hs.getName());
         }
 
         return convertView;

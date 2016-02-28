@@ -10,18 +10,14 @@ public class HighSchool {
     @SerializedName("name")
     private String mName;
 
-    @SerializedName("is_limited")
-    private boolean mIsLimited;
-
     @SerializedName("before_events")
     private int mBeforeEvents;
 
     @SerializedName("after_events")
     private int mAfterEvents;
 
-    public HighSchool(String name, boolean isLimited, int beforeEvents, int afterEvents) {
+    public HighSchool(String name, int beforeEvents, int afterEvents) {
         mName = name;
-        mIsLimited = isLimited;
         mBeforeEvents = beforeEvents;
         mAfterEvents = afterEvents;
     }
@@ -30,15 +26,16 @@ public class HighSchool {
         return mName;
     }
 
-    public boolean isLimited() {
-        return mIsLimited;
-    }
-
     public int getBeforeEvents() {
         return mBeforeEvents;
     }
 
     public int getAfterEvents() {
         return mAfterEvents;
+    }
+
+    @Override
+    public String toString() {
+        return mName;
     }
 }
