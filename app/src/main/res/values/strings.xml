@@ -17,4 +17,6 @@
     <string name="button_judge">判定する</string>
 
     <string name="limited_route">(期間限定ルート)</string>
+
+    <string name="result_tmp">選択されているのは%1$sです。前イベント数%2$d、後イベント数%3$d</string>
 </resources>

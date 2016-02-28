@@ -13,8 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
@@ -52,13 +52,18 @@ public class MainActivity extends AppCompatActivity
 
         final Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
 
+        //結果暫定表示
+        final TextView textResult = (TextView) findViewById(R.id.text_result);
+
         //判定するボタン
         findViewById(R.id.button_judge).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DebugUtil.log("selected = %s", spinnerHighSchool.getSelectedItem());
+                textResult.setText(getString(R.string.result_tmp, spinnerHighSchool.getSelectedItem(),0, 0));
             }
         });
+
     }
 
     @Override
