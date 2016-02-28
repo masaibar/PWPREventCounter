@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
@@ -47,6 +49,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         new GetJSONAsyncTask(JSON_URL, this).execute();
+
+        final Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
+
+        //判定するボタン
+        findViewById(R.id.button_judge).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DebugUtil.log("selected = %s", spinnerHighSchool.getSelectedItem());
+            }
+        });
     }
 
     @Override
@@ -106,25 +118,29 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void setHighSchoolSpinner(List<HighSchool> highSchools) {
-        Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
+    private void setHighSchoolSpinner(Spinner spinner, List<HighSchool> highSchools) {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item);
         for(HighSchool hs : highSchools) {
-            String name = hs.getName();
+            StringBuilder name = new StringBuilder(hs.getName());
+            if (hs.isLimited()) { //フラグを見て期間限定なら末尾に追記
+                name.append(getString(R.string.limited_route));
+            }
             adapter.add(name);
         }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerHighSchool.setAdapter(adapter);
+        spinner.setAdapter(adapter);
     }
 
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
 
         private String mUrl;
         private Activity mActivity; //画面更新不要ならいらないかも
+        private Spinner mSpinnerHighSchool;
 
         public GetJSONAsyncTask(String url, Activity activity) {
             mUrl = url;
             mActivity = activity;
+            mSpinnerHighSchool = (Spinner) mActivity.findViewById(R.id.spinner_high_school);
         }
 
         @Override
@@ -163,7 +179,7 @@ public class MainActivity extends AppCompatActivity
                         highSchool.getName(), highSchool.isLimited(), highSchool.getBeforeEvents(), highSchool.getAfterEvents());
             }
 
-            setHighSchoolSpinner(highSchools);
+            setHighSchoolSpinner(mSpinnerHighSchool, highSchools);
         }
     }
 }

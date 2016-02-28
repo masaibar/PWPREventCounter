@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_event_character1" />
+            android:text="@string/event_character1" />
 
         <EditText
             android:id="@+id/edit_text_character1"
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_event_character2" />
+            android:text="@string/event_character2" />
 
         <Spinner
             android:id="@+id/spnner_charachter2"
@@ -62,4 +62,12 @@
             android:layout_height="wrap_content"></Spinner>
 
     </LinearLayout>
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/button_judge"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_judge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

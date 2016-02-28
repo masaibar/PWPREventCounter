@@ -7,10 +7,14 @@
     <string name="action_settings">Settings</string>
 
     <string name="main_high_school_name">高校名</string>
-    <string name="main_event_character1">1人目</string>
-    <string name="main_event_character2">2人目</string>
-    <string name="main_event_character3">3人目</string>
-    <string name="main_event_character4">4人目</string>
-    <string name="main_event_character5">5人目</string>
-    <string name="main_event_character6">6人目</string>
+    <string name="event_character1">1人目</string>
+    <string name="event_character2">2人目</string>
+    <string name="event_character3">3人目</string>
+    <string name="event_character4">4人目</string>
+    <string name="event_character5">5人目</string>
+    <string name="event_character6">6人目</string>
+
+    <string name="button_judge">判定する</string>
+
+    <string name="limited_route">(期間限定ルート)</string>
 </resources>
