@@ -13,6 +13,7 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <!--高校名-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +31,8 @@
 
         </Spinner>
     </LinearLayout>
+
+    <!--1人目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,10 +43,10 @@
             android:layout_height="wrap_content"
             android:text="@string/event_character1" />
 
-        <EditText
-            android:id="@+id/edit_text_character1"
+        <Spinner
+            android:id="@+id/spinner_charachter1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"></Spinner>
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +60,7 @@
             android:text="@string/event_character2" />
 
         <Spinner
-            android:id="@+id/spnner_charachter2"
+            android:id="@+id/spinner_charachter2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Spinner>
 

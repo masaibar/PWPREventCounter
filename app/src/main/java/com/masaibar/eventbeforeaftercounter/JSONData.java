@@ -12,7 +12,7 @@ public class JSONData {
     @SerializedName("high_schools")
     private List<HighSchool> mHighSchools;
 
-    @SerializedName("charactes")
+    @SerializedName("event_characters")
     private List<EventCharacter> mEventCharacters;
 
     public JSONData(List<HighSchool> highSchools, List<EventCharacter> eventCharacters) {

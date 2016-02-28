@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
+import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
 import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
 import com.masaibar.eventbeforeaftercounter.util.StringUtil;
 
@@ -129,16 +130,24 @@ public class MainActivity extends AppCompatActivity
         spinner.setAdapter(adapter);
     }
 
+    private void setEventCharacterSpinner(Spinner spinner, List<EventCharacter> eventCharacters) {
+        EventCharacterAdapter adapter = new EventCharacterAdapter(this, android.R.layout.simple_spinner_item, eventCharacters);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
+
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
 
         private String mUrl;
         private Activity mActivity; //画面更新不要ならいらないかも
         private Spinner mSpinnerHighSchool;
+        private Spinner mSpinnerEventCharacter1;
 
         public GetJSONAsyncTask(String url, Activity activity) {
             mUrl = url;
             mActivity = activity;
             mSpinnerHighSchool = (Spinner) mActivity.findViewById(R.id.spinner_high_school);
+            mSpinnerEventCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_charachter1);
         }
 
         @Override
@@ -162,22 +171,19 @@ public class MainActivity extends AppCompatActivity
         }
 
         @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
+        protected void onPostExecute(String jsonString) {
+            super.onPostExecute(jsonString);
 
-            DebugUtil.log("result = %s", result);
+            DebugUtil.log("jsonString = %s", jsonString);
 
             Gson gson = new Gson();
-            JSONData jsonData = gson.fromJson(result, JSONData.class);
+            JSONData jsonData = gson.fromJson(jsonString, JSONData.class);
 
-            List<HighSchool> highSchools = jsonData.getHighSchools();
+            //高校
+            setHighSchoolSpinner(mSpinnerHighSchool, jsonData.getHighSchools());
 
-            for (HighSchool highSchool : highSchools) {
-                DebugUtil.log("highschool = %s, b = %s, a = %s",
-                        highSchool.getName(), highSchool.getBeforeEvents(), highSchool.getAfterEvents());
-            }
-
-            setHighSchoolSpinner(mSpinnerHighSchool, highSchools);
+            //イベントキャラクター
+            setEventCharacterSpinner(mSpinnerEventCharacter1, jsonData.getEventCharacters());
         }
     }
 }
