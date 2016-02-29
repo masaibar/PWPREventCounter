@@ -9,15 +9,26 @@ import java.util.List;
  */
 public class JSONData {
 
+    @SerializedName("need_update")
+    private boolean mNeedUpdate;
+
     @SerializedName("high_schools")
     private List<HighSchool> mHighSchools;
 
     @SerializedName("event_characters")
     private List<EventCharacter> mEventCharacters;
 
-    public JSONData(List<HighSchool> highSchools, List<EventCharacter> eventCharacters) {
+    public JSONData(
+            boolean needUpdate,
+            List<HighSchool> highSchools,
+            List<EventCharacter> eventCharacters) {
+        mNeedUpdate = needUpdate;
         mHighSchools = highSchools;
         mEventCharacters = eventCharacters;
+    }
+
+    public boolean isNeedUpdate() {
+        return mNeedUpdate;
     }
 
     public List<HighSchool> getHighSchools() {
