@@ -1,7 +1,6 @@
 package com.masaibar.eventbeforeaftercounter;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -20,13 +19,9 @@ import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
 import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
 import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
-import com.masaibar.eventbeforeaftercounter.util.StringUtil;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
