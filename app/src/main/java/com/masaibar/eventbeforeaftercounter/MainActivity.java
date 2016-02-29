@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,27 +50,27 @@ public class MainActivity extends AppCompatActivity
 
         switch (v.getId()) {
             case R.id.button_open_wiki_1:
-                openWiki(character1);
+                openCharacterWiki(character1);
                 break;
 
             case R.id.button_open_wiki_2:
-                openWiki(character2);
+                openCharacterWiki(character2);
                 break;
 
             case R.id.button_open_wiki_3:
-                openWiki(character3);
+                openCharacterWiki(character3);
                 break;
 
             case R.id.button_open_wiki_4:
-                openWiki(character4);
+                openCharacterWiki(character4);
                 break;
 
             case R.id.button_open_wiki_5:
-                openWiki(character5);
+                openCharacterWiki(character5);
                 break;
 
             case R.id.button_open_wiki_6:
-                openWiki(character6);
+                openCharacterWiki(character6);
                 break;
 
             case R.id.button_judge:
@@ -132,12 +133,19 @@ public class MainActivity extends AppCompatActivity
         spinner.setAdapter(adapter);
     }
 
-    private void openWiki(EventCharacter ec) {
+    private void openCharacterWiki(EventCharacter ec) {
         if (ec != null) {
-            String url = WIKI_URL_BASE + ec.getName();
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            Intent intent =
+                    new Intent(Intent.ACTION_VIEW, Uri.parse(getCharacterWikiUrl(ec.getName())));
             startActivity(intent);
         }
+    }
+
+    private String getCharacterWikiUrl(String characterName) {
+        if (TextUtils.isEmpty(characterName)) {
+            return null;
+        }
+        return WIKI_URL_BASE + characterName;
     }
 
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
