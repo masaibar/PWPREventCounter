@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity
 
         final Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
 
-
         //結果暫定表示
         final TextView textResult = (TextView) findViewById(R.id.text_result);
 
@@ -86,12 +85,22 @@ public class MainActivity extends AppCompatActivity
         private Activity mActivity; //画面更新不要ならいらないかも
         private Spinner mSpinnerHighSchool;
         private Spinner mSpinnerEventCharacter1;
+        private Spinner mSpinnerEventCharacter2;
+        private Spinner mSpinnerEventCharacter3;
+        private Spinner mSpinnerEventCharacter4;
+        private Spinner mSpinnerEventCharacter5;
+        private Spinner mSpinnerEventCharacter6;
 
         public GetJSONAsyncTask(String url, Activity activity) {
             mUrl = url;
             mActivity = activity;
             mSpinnerHighSchool = (Spinner) mActivity.findViewById(R.id.spinner_high_school);
             mSpinnerEventCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_charachter1);
+            mSpinnerEventCharacter2 = (Spinner) mActivity.findViewById(R.id.spinner_charachter2);
+            mSpinnerEventCharacter3 = (Spinner) mActivity.findViewById(R.id.spinner_charachter3);
+            mSpinnerEventCharacter4 = (Spinner) mActivity.findViewById(R.id.spinner_charachter4);
+            mSpinnerEventCharacter5 = (Spinner) mActivity.findViewById(R.id.spinner_charachter5);
+            mSpinnerEventCharacter6 = (Spinner) mActivity.findViewById(R.id.spinner_charachter6);
         }
 
         @Override
@@ -127,7 +136,13 @@ public class MainActivity extends AppCompatActivity
             setHighSchoolSpinner(mSpinnerHighSchool, jsonData.getHighSchools());
 
             //イベントキャラクター
-            setEventCharacterSpinner(mSpinnerEventCharacter1, jsonData.getEventCharacters());
+            List<EventCharacter> eventCharacters = jsonData.getEventCharacters();
+            setEventCharacterSpinner(mSpinnerEventCharacter1, eventCharacters);
+            setEventCharacterSpinner(mSpinnerEventCharacter2, eventCharacters);
+            setEventCharacterSpinner(mSpinnerEventCharacter3, eventCharacters);
+            setEventCharacterSpinner(mSpinnerEventCharacter4, eventCharacters);
+            setEventCharacterSpinner(mSpinnerEventCharacter5, eventCharacters);
+            setEventCharacterSpinner(mSpinnerEventCharacter6, eventCharacters);
         }
     }
 
