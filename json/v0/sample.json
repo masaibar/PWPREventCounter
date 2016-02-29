@@ -23,16 +23,40 @@
   ],
   "event_characters": [
     {
-      "name": "矢部明雄(SR)",
+      "name": "青葉春人（SR）",
       "rarity": "SR",
-      "before_events": 0,
-      "after_events": 4
+      "before_events": 1,
+      "after_events": 0
     },
     {
-      "name": "阿畑やすし(SR)",
+      "name": "秋葉一真（SR）",
       "rarity": "SR",
-      "before_events": 5,
+      "before_events": 2,
       "after_events": 0
+    },
+    {
+      "name": "明星雪華（SR）",
+      "rarity": "SR",
+      "before_events": 3,
+      "after_events": 0
+    },
+    {
+      "name": "阿畑やすし（SR）",
+      "rarity": "SR",
+      "before_events": 0,
+      "after_events": 1
+    },
+    {
+      "name": "天城隼（SR）",
+      "rarity": "SR",
+      "before_events": 0,
+      "after_events": 2
+    },
+    {
+      "name": "嵐丸士朗（SR）",
+      "rarity": "SR",
+      "before_events": 0,
+      "after_events": 3
     }
   ]
 }
