@@ -1,11 +1,18 @@
 package com.masaibar.eventbeforeaftercounter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by masaibar on 2016/02/28.
  */
 public class EventCharacter {
+
+    private static final String WIKI_URL_BASE = "http://wiki.famitsu.com/pawapuro/";
+
     @SerializedName("name")
     private String mName;
 
@@ -39,5 +46,15 @@ public class EventCharacter {
 
     public int getAfterEvents() {
         return mAfterEvents;
+    }
+
+
+    public void openWiki(Context context) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getWikiUrl()));
+        context.startActivity(intent);
+    }
+
+    private  String getWikiUrl() {
+        return WIKI_URL_BASE + getName();
     }
 }

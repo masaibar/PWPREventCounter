@@ -1,8 +1,7 @@
 package com.masaibar.eventbeforeaftercounter;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,10 +35,9 @@ public class MainActivity extends AppCompatActivity
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
 
-    private static final String WIKI_URL_BASE = "http://wiki.famitsu.com/pawapuro/";
-
     @Override
     public void onClick(View v) {
+        Context context = getApplicationContext();
         HighSchool highSchool = (HighSchool) getSelectedItem(R.id.spinner_high_school);
         EventCharacter character1 = (EventCharacter) getSelectedItem(R.id.spinner_charachter1);
         EventCharacter character2 = (EventCharacter) getSelectedItem(R.id.spinner_charachter2);
@@ -51,27 +48,27 @@ public class MainActivity extends AppCompatActivity
 
         switch (v.getId()) {
             case R.id.button_open_wiki_1:
-                openCharacterWiki(character1);
+                character1.openWiki(context);
                 break;
 
             case R.id.button_open_wiki_2:
-                openCharacterWiki(character2);
+                character2.openWiki(context);
                 break;
 
             case R.id.button_open_wiki_3:
-                openCharacterWiki(character3);
+                character3.openWiki(context);
                 break;
 
             case R.id.button_open_wiki_4:
-                openCharacterWiki(character4);
+                character4.openWiki(context);
                 break;
 
             case R.id.button_open_wiki_5:
-                openCharacterWiki(character5);
+                character5.openWiki(context);
                 break;
 
             case R.id.button_open_wiki_6:
-                openCharacterWiki(character6);
+                character6.openWiki(context);
                 break;
 
             case R.id.button_judge:
@@ -137,21 +134,6 @@ public class MainActivity extends AppCompatActivity
         EventCharacterAdapter adapter = new EventCharacterAdapter(this, android.R.layout.simple_spinner_item, eventCharacters);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-    }
-
-    private void openCharacterWiki(EventCharacter ec) {
-        if (ec != null) {
-            Intent intent =
-                    new Intent(Intent.ACTION_VIEW, Uri.parse(getCharacterWikiUrl(ec.getName())));
-            startActivity(intent);
-        }
-    }
-
-    private String getCharacterWikiUrl(String characterName) {
-        if (TextUtils.isEmpty(characterName)) {
-            return null;
-        }
-        return WIKI_URL_BASE + characterName;
     }
 
     private boolean hasDuplicatedCharacters() {
