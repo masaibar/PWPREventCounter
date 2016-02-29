@@ -61,7 +61,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 HighSchool hs = (HighSchool) spinnerHighSchool.getSelectedItem();
-                textResult.setText(getString(R.string.result_tmp, hs.getName(), hs.getBeforeEvents(), hs.getAfterEvents()));
+                if (hs != null) {
+                    textResult.setText(getString(R.string.result_tmp, hs.getName(), hs.getBeforeEvents(), hs.getAfterEvents()));
+                }
             }
         });
 

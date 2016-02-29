@@ -13,7 +13,7 @@
     <string name="event_character4">4人目</string>
     <string name="event_character5">5人目</string>
     <string name="event_character6">6人目</string>
-
+    <string name="button_open_wiki">Wikiを開く</string>
     <string name="button_judge">判定する</string>
 
     <string name="limited_route">(期間限定ルート)</string>
