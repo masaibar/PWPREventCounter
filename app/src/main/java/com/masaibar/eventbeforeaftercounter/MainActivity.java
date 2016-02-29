@@ -1,6 +1,7 @@
 package com.masaibar.eventbeforeaftercounter;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,10 +22,15 @@ import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
 import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
 import com.masaibar.eventbeforeaftercounter.util.StringUtil;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -107,22 +113,24 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected String doInBackground(Void... params) {
-            HttpsURLConnection connection;
-            String result = "";
+
+            String result = null;
+
+            Request request = new Request.Builder()
+                    .url(mUrl)
+                    .get()
+                    .build();
+
+            OkHttpClient client = new OkHttpClient();
+
             try {
-                URL url = new URL(mUrl);
-                connection = (HttpsURLConnection) url.openConnection();
-                connection.connect();
-
-                int response = connection.getResponseCode();
-
-                result = StringUtil.fromInputeStream(connection.getInputStream());
-
-                return result;
-            } catch (Exception e) {
+                Response response = client.newCall(request).execute();
+                result = response.body().string();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+
+            return result;
         }
 
         @Override
