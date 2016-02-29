@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.button_judge:
                 if (highSchool != null) {
+                    if (hasDuplicatedCharacters()) {
+                        //TODO strings.xml
+                        Toast.makeText(MainActivity.this, "duplicated", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     //結果暫定表示
                     final TextView textResult = (TextView) findViewById(R.id.text_result);
                     textResult.setText(getString(R.string.result_tmp, highSchool.getName(), highSchool.getBeforeEvents(), highSchool.getAfterEvents()));
@@ -146,6 +152,11 @@ public class MainActivity extends AppCompatActivity
             return null;
         }
         return WIKI_URL_BASE + characterName;
+    }
+
+    private boolean hasDuplicatedCharacters() {
+        
+        return true;
     }
 
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
