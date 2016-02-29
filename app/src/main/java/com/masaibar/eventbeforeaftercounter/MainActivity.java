@@ -1,6 +1,8 @@
 package com.masaibar.eventbeforeaftercounter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -28,10 +30,60 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
+
+    private static final String WIKI_URL_BASE = "http://wiki.famitsu.com/pawapuro/";
+
+    @Override
+    public void onClick(View v) {
+        HighSchool highSchool = (HighSchool) getSelectedItem(R.id.spinner_high_school);
+        EventCharacter character1 = (EventCharacter) getSelectedItem(R.id.spinner_charachter1);
+        EventCharacter character2 = (EventCharacter) getSelectedItem(R.id.spinner_charachter2);
+        EventCharacter character3 = (EventCharacter) getSelectedItem(R.id.spinner_charachter3);
+        EventCharacter character4 = (EventCharacter) getSelectedItem(R.id.spinner_charachter4);
+        EventCharacter character5 = (EventCharacter) getSelectedItem(R.id.spinner_charachter5);
+        EventCharacter character6 = (EventCharacter) getSelectedItem(R.id.spinner_charachter6);
+
+        switch (v.getId()) {
+            case R.id.button_open_wiki_1:
+                openWiki(character1);
+                break;
+
+            case R.id.button_open_wiki_2:
+                openWiki(character2);
+                break;
+
+            case R.id.button_open_wiki_3:
+                openWiki(character3);
+                break;
+
+            case R.id.button_open_wiki_4:
+                openWiki(character4);
+                break;
+
+            case R.id.button_open_wiki_5:
+                openWiki(character5);
+                break;
+
+            case R.id.button_open_wiki_6:
+                openWiki(character6);
+                break;
+
+            case R.id.button_judge:
+                if (highSchool != null) {
+                    //結果暫定表示
+                    final TextView textResult = (TextView) findViewById(R.id.text_result);
+                    textResult.setText(getString(R.string.result_tmp, highSchool.getName(), highSchool.getBeforeEvents(), highSchool.getAfterEvents()));
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,22 +104,20 @@ public class MainActivity extends AppCompatActivity
 
         new GetJSONAsyncTask(JSON_URL, this).execute();
 
-        final Spinner spinnerHighSchool = (Spinner) findViewById(R.id.spinner_high_school);
+        findViewById(R.id.button_judge).setOnClickListener(this);
+        findViewById(R.id.button_open_wiki_1).setOnClickListener(this);
+        findViewById(R.id.button_open_wiki_2).setOnClickListener(this);
+        findViewById(R.id.button_open_wiki_3).setOnClickListener(this);
+        findViewById(R.id.button_open_wiki_4).setOnClickListener(this);
+        findViewById(R.id.button_open_wiki_5).setOnClickListener(this);
+        findViewById(R.id.button_open_wiki_6).setOnClickListener(this);
+    }
 
-        //結果暫定表示
-        final TextView textResult = (TextView) findViewById(R.id.text_result);
-
-        //判定するボタン
-        findViewById(R.id.button_judge).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HighSchool hs = (HighSchool) spinnerHighSchool.getSelectedItem();
-                if (hs != null) {
-                    textResult.setText(getString(R.string.result_tmp, hs.getName(), hs.getBeforeEvents(), hs.getAfterEvents()));
-                }
-            }
-        });
-
+    /**
+     * 渡したidのSpinnerで選択されているObjectを返す、呼び出し元でキャストして使う
+     */
+    private Object getSelectedItem(int id) {
+        return ((Spinner) findViewById(id)).getSelectedItem();
     }
 
     private void setHighSchoolSpinner(Spinner spinner, List<HighSchool> highSchools) {
@@ -80,6 +130,14 @@ public class MainActivity extends AppCompatActivity
         EventCharacterAdapter adapter = new EventCharacterAdapter(this, android.R.layout.simple_spinner_item, eventCharacters);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    private void openWiki(EventCharacter ec) {
+        if (ec != null) {
+            String url = WIKI_URL_BASE + ec.getName();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        }
     }
 
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
