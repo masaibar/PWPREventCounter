@@ -35,19 +35,31 @@ public class MainActivity extends AppCompatActivity
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
 
+    private static final int NUM_CHARACTERS = 6;
+
     @Override
     public void onClick(View v) {
         Context context = getApplicationContext();
         HighSchool highSchool = (HighSchool) getSelectedItem(R.id.spinner_high_school);
-        EventCharacter character1 = (EventCharacter) getSelectedItem(R.id.spinner_charachter1);
-        EventCharacter character2 = (EventCharacter) getSelectedItem(R.id.spinner_charachter2);
-        EventCharacter character3 = (EventCharacter) getSelectedItem(R.id.spinner_charachter3);
-        EventCharacter character4 = (EventCharacter) getSelectedItem(R.id.spinner_charachter4);
-        EventCharacter character5 = (EventCharacter) getSelectedItem(R.id.spinner_charachter5);
-        EventCharacter character6 = (EventCharacter) getSelectedItem(R.id.spinner_charachter6);
+//        EventCharacter eventCharacters[] = new EventCharacter[NUM_CHARACTERS];
+
+//        for (int i = 1; i <= NUM_CHARACTERS; i++) {
+//            eventCharacters[i] = (EventCharacter) getSelectedItem(getResources().getIdentifier(
+//                    "spinner_character" + String.valueOf(i),
+//                    "id",
+//                    getPackageName()));
+//        }
+//
+        EventCharacter character1 = (EventCharacter) getSelectedItem(R.id.spinner_character1);
+        EventCharacter character2 = (EventCharacter) getSelectedItem(R.id.spinner_character2);
+        EventCharacter character3 = (EventCharacter) getSelectedItem(R.id.spinner_character3);
+        EventCharacter character4 = (EventCharacter) getSelectedItem(R.id.spinner_character4);
+        EventCharacter character5 = (EventCharacter) getSelectedItem(R.id.spinner_character5);
+        EventCharacter character6 = (EventCharacter) getSelectedItem(R.id.spinner_character6);
 
         switch (v.getId()) {
             case R.id.button_open_wiki_1:
+//                eventCharacters[1].openWiki(context);
                 character1.openWiki(context);
                 break;
 
@@ -137,7 +149,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private boolean hasDuplicatedCharacters() {
-        
+
         return true;
     }
 
@@ -157,12 +169,12 @@ public class MainActivity extends AppCompatActivity
             mUrl = url;
             mActivity = activity;
             mSpinnerHighSchool = (Spinner) mActivity.findViewById(R.id.spinner_high_school);
-            mSpinnerEventCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_charachter1);
-            mSpinnerEventCharacter2 = (Spinner) mActivity.findViewById(R.id.spinner_charachter2);
-            mSpinnerEventCharacter3 = (Spinner) mActivity.findViewById(R.id.spinner_charachter3);
-            mSpinnerEventCharacter4 = (Spinner) mActivity.findViewById(R.id.spinner_charachter4);
-            mSpinnerEventCharacter5 = (Spinner) mActivity.findViewById(R.id.spinner_charachter5);
-            mSpinnerEventCharacter6 = (Spinner) mActivity.findViewById(R.id.spinner_charachter6);
+            mSpinnerEventCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_character1);
+            mSpinnerEventCharacter2 = (Spinner) mActivity.findViewById(R.id.spinner_character2);
+            mSpinnerEventCharacter3 = (Spinner) mActivity.findViewById(R.id.spinner_character3);
+            mSpinnerEventCharacter4 = (Spinner) mActivity.findViewById(R.id.spinner_character4);
+            mSpinnerEventCharacter5 = (Spinner) mActivity.findViewById(R.id.spinner_character5);
+            mSpinnerEventCharacter6 = (Spinner) mActivity.findViewById(R.id.spinner_character6);
         }
 
         @Override

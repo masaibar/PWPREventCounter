@@ -46,7 +46,7 @@
             android:text="@string/event_character1" />
 
         <Spinner
-            android:id="@+id/spinner_charachter1"
+            android:id="@+id/spinner_character1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -72,7 +72,7 @@
             android:text="@string/event_character2" />
 
         <Spinner
-            android:id="@+id/spinner_charachter2"
+            android:id="@+id/spinner_character2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -99,7 +99,7 @@
             android:text="@string/event_character3" />
 
         <Spinner
-            android:id="@+id/spinner_charachter3"
+            android:id="@+id/spinner_character3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -125,7 +125,7 @@
             android:text="@string/event_character4" />
 
         <Spinner
-            android:id="@+id/spinner_charachter4"
+            android:id="@+id/spinner_character4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -151,7 +151,7 @@
             android:text="@string/event_character5" />
 
         <Spinner
-            android:id="@+id/spinner_charachter5"
+            android:id="@+id/spinner_character5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -177,7 +177,7 @@
             android:text="@string/event_character6" />
 
         <Spinner
-            android:id="@+id/spinner_charachter6"
+            android:id="@+id/spinner_character6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
