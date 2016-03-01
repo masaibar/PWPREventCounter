@@ -51,6 +51,7 @@ public class EventCharacter {
 
     public void openWiki(Context context) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getWikiUrl()));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
