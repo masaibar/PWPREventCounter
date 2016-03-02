@@ -35,21 +35,11 @@ public class MainActivity extends AppCompatActivity
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
 
-    private static final int NUM_CHARACTERS = 6;
-
     @Override
     public void onClick(View v) {
         Context context = getApplicationContext();
         HighSchool highSchool = (HighSchool) getSelectedItem(R.id.spinner_high_school);
-//        EventCharacter eventCharacters[] = new EventCharacter[NUM_CHARACTERS];
 
-//        for (int i = 1; i <= NUM_CHARACTERS; i++) {
-//            eventCharacters[i] = (EventCharacter) getSelectedItem(getResources().getIdentifier(
-//                    "spinner_character" + String.valueOf(i),
-//                    "id",
-//                    getPackageName()));
-//        }
-//
         EventCharacter character1 = (EventCharacter) getSelectedItem(R.id.spinner_character1);
         EventCharacter character2 = (EventCharacter) getSelectedItem(R.id.spinner_character2);
         EventCharacter character3 = (EventCharacter) getSelectedItem(R.id.spinner_character3);
@@ -59,7 +49,6 @@ public class MainActivity extends AppCompatActivity
 
         switch (v.getId()) {
             case R.id.button_open_wiki_1:
-//                eventCharacters[1].openWiki(context);
                 character1.openWiki(context);
                 break;
 
@@ -158,23 +147,23 @@ public class MainActivity extends AppCompatActivity
         private String mUrl;
         private Activity mActivity; //画面更新不要ならいらないかも
         private Spinner mSpinnerHighSchool;
-        private Spinner mSpinnerEventCharacter1;
-        private Spinner mSpinnerEventCharacter2;
-        private Spinner mSpinnerEventCharacter3;
-        private Spinner mSpinnerEventCharacter4;
-        private Spinner mSpinnerEventCharacter5;
-        private Spinner mSpinnerEventCharacter6;
+        private Spinner mSpinnerCharacter1;
+        private Spinner mSpinnerCharacter2;
+        private Spinner mSpinnerCharacter3;
+        private Spinner mSpinnerCharacter4;
+        private Spinner mSpinnerCharacter5;
+        private Spinner mSpinnerCharacter6;
 
         public GetJSONAsyncTask(String url, Activity activity) {
             mUrl = url;
             mActivity = activity;
             mSpinnerHighSchool = (Spinner) mActivity.findViewById(R.id.spinner_high_school);
-            mSpinnerEventCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_character1);
-            mSpinnerEventCharacter2 = (Spinner) mActivity.findViewById(R.id.spinner_character2);
-            mSpinnerEventCharacter3 = (Spinner) mActivity.findViewById(R.id.spinner_character3);
-            mSpinnerEventCharacter4 = (Spinner) mActivity.findViewById(R.id.spinner_character4);
-            mSpinnerEventCharacter5 = (Spinner) mActivity.findViewById(R.id.spinner_character5);
-            mSpinnerEventCharacter6 = (Spinner) mActivity.findViewById(R.id.spinner_character6);
+            mSpinnerCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_character1);
+            mSpinnerCharacter2 = (Spinner) mActivity.findViewById(R.id.spinner_character2);
+            mSpinnerCharacter3 = (Spinner) mActivity.findViewById(R.id.spinner_character3);
+            mSpinnerCharacter4 = (Spinner) mActivity.findViewById(R.id.spinner_character4);
+            mSpinnerCharacter5 = (Spinner) mActivity.findViewById(R.id.spinner_character5);
+            mSpinnerCharacter6 = (Spinner) mActivity.findViewById(R.id.spinner_character6);
         }
 
         @Override
@@ -213,12 +202,12 @@ public class MainActivity extends AppCompatActivity
 
             //イベントキャラクター
             List<EventCharacter> eventCharacters = jsonData.getEventCharacters();
-            setEventCharacterSpinner(mSpinnerEventCharacter1, eventCharacters);
-            setEventCharacterSpinner(mSpinnerEventCharacter2, eventCharacters);
-            setEventCharacterSpinner(mSpinnerEventCharacter3, eventCharacters);
-            setEventCharacterSpinner(mSpinnerEventCharacter4, eventCharacters);
-            setEventCharacterSpinner(mSpinnerEventCharacter5, eventCharacters);
-            setEventCharacterSpinner(mSpinnerEventCharacter6, eventCharacters);
+            setEventCharacterSpinner(mSpinnerCharacter1, eventCharacters);
+            setEventCharacterSpinner(mSpinnerCharacter2, eventCharacters);
+            setEventCharacterSpinner(mSpinnerCharacter3, eventCharacters);
+            setEventCharacterSpinner(mSpinnerCharacter4, eventCharacters);
+            setEventCharacterSpinner(mSpinnerCharacter5, eventCharacters);
+            setEventCharacterSpinner(mSpinnerCharacter6, eventCharacters);
         }
     }
 
