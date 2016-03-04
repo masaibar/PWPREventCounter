@@ -19,17 +19,34 @@ public class EventCharacter {
     @SerializedName("rarity")
     private String mRarity;
 
-    @SerializedName("before_events")
-    private int mBeforeEvents;
+    @SerializedName("before")
+    private int mBefore;
 
-    @SerializedName("after_events")
-    private int mAfterEvents;
+    @SerializedName("multi_before")
+    private int mMultiBefore;
 
-    public EventCharacter(String name, String rarity, int beforeEvents, int afterEvents) {
+    @SerializedName("after")
+    private int mAfter;
+
+    @SerializedName("multi_after")
+    private int mMultiAfter;
+
+    @SerializedName("role")
+    private String mRole;
+
+    public EventCharacter(
+            String name, String rarity, int before, int multiBefore, int after, int multiAfter, String role) {
         mName = name;
         mRarity = rarity;
-        mBeforeEvents = beforeEvents;
-        mAfterEvents = afterEvents;
+        mBefore = before;
+        mMultiBefore = multiBefore;
+        mAfter = after;
+        mMultiAfter = multiAfter;
+        mRole = role;
+    }
+
+    public static String getWikiUrlBase() {
+        return WIKI_URL_BASE;
     }
 
     public String getName() {
@@ -40,14 +57,25 @@ public class EventCharacter {
         return mRarity;
     }
 
-    public int getBeforeEvents() {
-        return mBeforeEvents;
+    public int getBefore() {
+        return mBefore;
     }
 
-    public int getAfterEvents() {
-        return mAfterEvents;
+    public int getMultiBefore() {
+        return mMultiBefore;
     }
 
+    public int getAfter() {
+        return mAfter;
+    }
+
+    public int getMultiAfter() {
+        return mMultiAfter;
+    }
+
+    public String getRole() {
+        return mRole;
+    }
 
     public void openWiki(Context context) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getWikiUrl()));
@@ -56,6 +84,6 @@ public class EventCharacter {
     }
 
     private  String getWikiUrl() {
-        return WIKI_URL_BASE + getName();
+        return getWikiUrlBase() + getName();
     }
 }

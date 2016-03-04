@@ -1,5 +1,5 @@
 {
-  "need_update" : false,
+  "need_update": false,
   "high_schools": [
     {
       "name": "パワフル高校",
@@ -26,38 +26,65 @@
     {
       "name": "青葉春人（SR）",
       "rarity": "SR",
-      "before_events": 1,
-      "after_events": 0
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "球速"
     },
     {
       "name": "秋葉一真（SR）",
       "rarity": "SR",
-      "before_events": 2,
-      "after_events": 0
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "打撃"
     },
     {
       "name": "明星雪華（SR）",
       "rarity": "SR",
-      "before_events": 3,
-      "after_events": 0
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "彼女"
     },
     {
       "name": "阿畑やすし（SR）",
       "rarity": "SR",
-      "before_events": 0,
-      "after_events": 1
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "変化"
     },
     {
       "name": "天城隼（SR）",
       "rarity": "SR",
-      "before_events": 0,
-      "after_events": 2
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "精神"
     },
     {
       "name": "嵐丸士朗（SR）",
       "rarity": "SR",
-      "before_events": 0,
-      "after_events": 3
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "精神"
+    },
+    {
+      "name": "有村佐治（SR）",
+      "rarity": "SR",
+      "before": 1,
+      "multi_before": 0,
+      "after": 0,
+      "multi_after": 1,
+      "role": "肩力"
     }
   ]
 }
