@@ -1,4 +1,4 @@
-package com.masaibar.eventbeforeaftercounter;
+package com.masaibar.eventbeforeaftercounter.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,6 +20,10 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
+import com.masaibar.eventbeforeaftercounter.EventCharacter;
+import com.masaibar.eventbeforeaftercounter.HighSchool;
+import com.masaibar.eventbeforeaftercounter.JSONData;
+import com.masaibar.eventbeforeaftercounter.R;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
 import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
 import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
@@ -84,6 +88,8 @@ public class MainActivity extends AppCompatActivity
                     //結果暫定表示
                     final TextView textResult = (TextView) findViewById(R.id.text_result);
                     textResult.setText(getString(R.string.result_tmp, highSchool.getName(), highSchool.getBeforeEvents(), highSchool.getAfterEvents()));
+
+                    ResultActivity.start(getApplicationContext());
                 }
                 break;
 
@@ -147,7 +153,8 @@ public class MainActivity extends AppCompatActivity
 
     private boolean hasDuplicatedCharacters() {
 
-        return true;
+//        return true;
+        return false;
     }
 
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
