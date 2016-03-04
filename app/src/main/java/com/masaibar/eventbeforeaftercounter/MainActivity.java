@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
 import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setUpAd();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,6 +121,11 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.button_open_wiki_6).setOnClickListener(this);
     }
 
+    private void setUpAd() {
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
     /**
      * 渡したidのSpinnerで選択されているObjectを返す、呼び出し元でキャストして使う
      */

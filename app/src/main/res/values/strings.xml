@@ -19,4 +19,6 @@
     <string name="limited_route">(期間限定ルート)</string>
 
     <string name="result_tmp">選択されているのは%1$sです。前イベント数%2$d、後イベント数%3$d</string>
+
+    <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
