@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
 
         private String mUrl;
-        private Activity mActivity; //画面更新不要ならいらないかも
         private Spinner mSpinnerHighSchool;
         private Spinner mSpinnerCharacter1;
         private Spinner mSpinnerCharacter2;
@@ -156,14 +155,13 @@ public class MainActivity extends AppCompatActivity
 
         public GetJSONAsyncTask(String url, Activity activity) {
             mUrl = url;
-            mActivity = activity;
-            mSpinnerHighSchool = (Spinner) mActivity.findViewById(R.id.spinner_high_school);
-            mSpinnerCharacter1 = (Spinner) mActivity.findViewById(R.id.spinner_character1);
-            mSpinnerCharacter2 = (Spinner) mActivity.findViewById(R.id.spinner_character2);
-            mSpinnerCharacter3 = (Spinner) mActivity.findViewById(R.id.spinner_character3);
-            mSpinnerCharacter4 = (Spinner) mActivity.findViewById(R.id.spinner_character4);
-            mSpinnerCharacter5 = (Spinner) mActivity.findViewById(R.id.spinner_character5);
-            mSpinnerCharacter6 = (Spinner) mActivity.findViewById(R.id.spinner_character6);
+            mSpinnerHighSchool = (Spinner) activity.findViewById(R.id.spinner_high_school);
+            mSpinnerCharacter1 = (Spinner) activity.findViewById(R.id.spinner_character1);
+            mSpinnerCharacter2 = (Spinner) activity.findViewById(R.id.spinner_character2);
+            mSpinnerCharacter3 = (Spinner) activity.findViewById(R.id.spinner_character3);
+            mSpinnerCharacter4 = (Spinner) activity.findViewById(R.id.spinner_character4);
+            mSpinnerCharacter5 = (Spinner) activity.findViewById(R.id.spinner_character5);
+            mSpinnerCharacter6 = (Spinner) activity.findViewById(R.id.spinner_character6);
         }
 
         @Override
