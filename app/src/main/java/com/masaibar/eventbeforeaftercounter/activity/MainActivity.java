@@ -30,6 +30,7 @@ import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
 import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -37,7 +38,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
@@ -197,11 +198,40 @@ public class MainActivity extends AppCompatActivity
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
+
     /**
      * 渡したidのSpinnerで選択されているObjectを返す、呼び出し元でキャストして使う
      */
     private Object getSelectedItem(int id) {
         return ((Spinner) findViewById(id)).getSelectedItem();
+    }
+
+    /**
+     * 重複しているイベキャラがいたらtrueを返す
+     * @return true/false
+     */
+    private boolean hasDuplicatedCharacters() {
+
+        ArrayList<EventCharacter> eventCharacters = new ArrayList<>();
+        eventCharacters.add(mEventCharacter1);
+        eventCharacters.add(mEventCharacter2);
+        eventCharacters.add(mEventCharacter3);
+        eventCharacters.add(mEventCharacter4);
+        eventCharacters.add(mEventCharacter5);
+        eventCharacters.add(mEventCharacter6);
+
+        for (int i = 0; i < eventCharacters.size(); i++) {
+            for (int j = 0; j < eventCharacters.size(); j++) {
+                if (i == j) {
+                    continue;
+                }
+                if (eventCharacters.get(i).equals(eventCharacters.get(j))) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private void setHighSchoolSpinner(Spinner spinner, List<HighSchool> highSchools) {
@@ -214,12 +244,6 @@ public class MainActivity extends AppCompatActivity
         EventCharacterAdapter adapter = new EventCharacterAdapter(this, android.R.layout.simple_spinner_item, eventCharacters);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-    }
-
-    private boolean hasDuplicatedCharacters() {
-
-//        return true;
-        return false;
     }
 
     private class GetJSONAsyncTask extends AsyncTask<Void, Void, String> {
