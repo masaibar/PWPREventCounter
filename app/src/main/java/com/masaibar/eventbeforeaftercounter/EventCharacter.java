@@ -6,10 +6,12 @@ import android.net.Uri;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by masaibar on 2016/02/28.
  */
-public class EventCharacter {
+public class EventCharacter implements Serializable{
 
     private static final String WIKI_URL_BASE = "http://wiki.famitsu.com/pawapuro/";
 
@@ -85,5 +87,11 @@ public class EventCharacter {
 
     private  String getWikiUrl() {
         return getWikiUrlBase() + getName();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("name = %s, before = %d, multiBefore = %d, after = %d, multiAfter = %d, role = %s\n",
+                getName(), getBefore(), getMultiBefore(), getAfter(), getMultiAfter(), getRole());
     }
 }

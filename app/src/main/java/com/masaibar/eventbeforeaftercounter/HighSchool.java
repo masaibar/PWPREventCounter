@@ -2,10 +2,12 @@ package com.masaibar.eventbeforeaftercounter;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by masaibar on 2016/02/28.
  */
-public class HighSchool {
+public class HighSchool implements Serializable{
 
     @SerializedName("name")
     private String mName;
@@ -36,7 +38,7 @@ public class HighSchool {
 
     @Override
     public String toString() {
-        return String.format("name = %s, beforeEvents = %s, afterEvents = %s",
+        return String.format("name = %s, beforeEvents = %s, afterEvents = %s\n",
                 mName, String.valueOf(mBeforeEvents), String.valueOf(mAfterEvents));
     }
 }

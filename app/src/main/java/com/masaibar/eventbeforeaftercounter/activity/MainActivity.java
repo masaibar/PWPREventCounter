@@ -23,6 +23,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 import com.masaibar.eventbeforeaftercounter.EventCharacter;
 import com.masaibar.eventbeforeaftercounter.HighSchool;
+import com.masaibar.eventbeforeaftercounter.InputData;
 import com.masaibar.eventbeforeaftercounter.JSONData;
 import com.masaibar.eventbeforeaftercounter.R;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity
                     final TextView textResult = (TextView) findViewById(R.id.text_result);
                     textResult.setText(getString(R.string.result_tmp, mHighSchool.getName(), mHighSchool.getBeforeEvents(), mHighSchool.getAfterEvents()));
 
-                    ResultActivity.start(getApplicationContext());
+                    ResultActivity.start(getApplicationContext(), getInputData());
                 }
                 break;
 
@@ -208,17 +209,12 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * 重複しているイベキャラがいたらtrueを返す
+     *
      * @return true/false
      */
     private boolean hasDuplicatedCharacters() {
 
-        ArrayList<EventCharacter> eventCharacters = new ArrayList<>();
-        eventCharacters.add(mEventCharacter1);
-        eventCharacters.add(mEventCharacter2);
-        eventCharacters.add(mEventCharacter3);
-        eventCharacters.add(mEventCharacter4);
-        eventCharacters.add(mEventCharacter5);
-        eventCharacters.add(mEventCharacter6);
+        ArrayList<EventCharacter> eventCharacters = getEventCharcters();
 
         for (int i = 0; i < eventCharacters.size(); i++) {
             for (int j = 0; j < eventCharacters.size(); j++) {
@@ -232,6 +228,23 @@ public class MainActivity extends AppCompatActivity
         }
 
         return false;
+    }
+
+    private InputData getInputData() {
+        return new InputData(mHighSchool, getEventCharcters());
+    }
+
+    private ArrayList<EventCharacter> getEventCharcters() {
+
+        ArrayList<EventCharacter> eventCharacters = new ArrayList<>();
+        eventCharacters.add(mEventCharacter1);
+        eventCharacters.add(mEventCharacter2);
+        eventCharacters.add(mEventCharacter3);
+        eventCharacters.add(mEventCharacter4);
+        eventCharacters.add(mEventCharacter5);
+        eventCharacters.add(mEventCharacter6);
+
+        return eventCharacters;
     }
 
     private void setHighSchoolSpinner(Spinner spinner, List<HighSchool> highSchools) {
