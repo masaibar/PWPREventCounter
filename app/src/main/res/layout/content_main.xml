@@ -25,18 +25,21 @@
 
         <Spinner
             android:id="@+id/spinner_high_school"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-        </Spinner>
+        <View
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <!--1人目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -50,19 +53,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/button_open_wiki_1"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_role_1"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="@string/button_open_wiki" />
+            android:gravity="right" />
     </LinearLayout>
 
     <!--2人目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -76,11 +79,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/button_open_wiki_2"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_role_2"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="@string/button_open_wiki" />
+            android:gravity="right" />
 
     </LinearLayout>
 
@@ -88,8 +91,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -103,19 +106,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/button_open_wiki_3"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_role_3"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="@string/button_open_wiki" />
+            android:gravity="right" />
     </LinearLayout>
 
     <!--4人目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -129,19 +132,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/button_open_wiki_4"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_role_4"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="@string/button_open_wiki" />
+            android:gravity="right" />
     </LinearLayout>
 
     <!--5人目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -155,19 +158,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/button_open_wiki_5"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_role_5"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="@string/button_open_wiki" />
+            android:gravity="right" />
     </LinearLayout>
 
     <!--6人目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -181,11 +184,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/button_open_wiki_6"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_role_6"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="@string/button_open_wiki" />
+            android:gravity="right" />
     </LinearLayout>
 
     <Button

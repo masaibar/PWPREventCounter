@@ -1,7 +1,6 @@
 package com.masaibar.eventbeforeaftercounter.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -39,7 +38,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
 
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
@@ -53,55 +52,6 @@ public class MainActivity extends AppCompatActivity
     private EventCharacter mEventCharacter6;
 
     @Override
-    public void onClick(View v) {
-        Context context = getApplicationContext();
-
-        switch (v.getId()) {
-            case R.id.button_open_wiki_1:
-                mEventCharacter1.openWiki(context);
-                break;
-
-            case R.id.button_open_wiki_2:
-                mEventCharacter2.openWiki(context);
-                break;
-
-            case R.id.button_open_wiki_3:
-                mEventCharacter3.openWiki(context);
-                break;
-
-            case R.id.button_open_wiki_4:
-                mEventCharacter4.openWiki(context);
-                break;
-
-            case R.id.button_open_wiki_5:
-                mEventCharacter5.openWiki(context);
-                break;
-
-            case R.id.button_open_wiki_6:
-                mEventCharacter6.openWiki(context);
-                break;
-
-            case R.id.button_judge:
-                if (mHighSchool != null) {
-                    if (hasDuplicatedCharacters()) {
-                        //TODO strings.xml
-                        Toast.makeText(MainActivity.this, "duplicated", Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-                    //結果暫定表示
-                    final TextView textResult = (TextView) findViewById(R.id.text_result);
-                    textResult.setText(getString(R.string.result_tmp, mHighSchool.getName(), mHighSchool.getBeforeEvents(), mHighSchool.getAfterEvents()));
-
-                    ResultActivity.start(getApplicationContext(), getInputData());
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         int spinnerId = parent.getId();
         switch (spinnerId) {
@@ -111,26 +61,32 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.spinner_character1:
                 mEventCharacter1 = (EventCharacter) getSelectedItem(spinnerId);
+                ((TextView) findViewById(R.id.text_role_1)).setText(mEventCharacter1.getRole());
                 break;
 
             case R.id.spinner_character2:
                 mEventCharacter2 = (EventCharacter) getSelectedItem(spinnerId);
+                ((TextView) findViewById(R.id.text_role_2)).setText(mEventCharacter2.getRole());
                 break;
 
             case R.id.spinner_character3:
                 mEventCharacter3 = (EventCharacter) getSelectedItem(spinnerId);
+                ((TextView) findViewById(R.id.text_role_3)).setText(mEventCharacter3.getRole());
                 break;
 
             case R.id.spinner_character4:
                 mEventCharacter4 = (EventCharacter) getSelectedItem(spinnerId);
+                ((TextView) findViewById(R.id.text_role_4)).setText(mEventCharacter4.getRole());
                 break;
 
             case R.id.spinner_character5:
                 mEventCharacter5 = (EventCharacter) getSelectedItem(spinnerId);
+                ((TextView) findViewById(R.id.text_role_5)).setText(mEventCharacter5.getRole());
                 break;
 
             case R.id.spinner_character6:
                 mEventCharacter6 = (EventCharacter) getSelectedItem(spinnerId);
+                ((TextView) findViewById(R.id.text_role_6)).setText(mEventCharacter6.getRole());
                 break;
 
             default:
@@ -164,7 +120,23 @@ public class MainActivity extends AppCompatActivity
         new GetJSONAsyncTask(JSON_URL, this).execute();
 
         setUpSpinners();
-        setUpClickListeners();
+        findViewById(R.id.button_judge).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mHighSchool != null) {
+                    if (hasDuplicatedCharacters()) {
+                        //TODO strings.xml
+                        Toast.makeText(MainActivity.this, "duplicated", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    //結果暫定表示
+                    final TextView textResult = (TextView) findViewById(R.id.text_result);
+                    textResult.setText(getString(R.string.result_tmp, mHighSchool.getName(), mHighSchool.getBeforeEvents(), mHighSchool.getAfterEvents()));
+
+                    ResultActivity.start(getApplicationContext(), getInputData());
+                }
+            }
+        });
     }
 
     private void setUpSpinners() {
@@ -182,16 +154,6 @@ public class MainActivity extends AppCompatActivity
         spinnerEC5.setOnItemSelectedListener(this);
         Spinner spinnerEC6 = (Spinner) findViewById(R.id.spinner_character6);
         spinnerEC6.setOnItemSelectedListener(this);
-    }
-
-    private void setUpClickListeners() {
-        findViewById(R.id.button_judge).setOnClickListener(this);
-        findViewById(R.id.button_open_wiki_1).setOnClickListener(this);
-        findViewById(R.id.button_open_wiki_2).setOnClickListener(this);
-        findViewById(R.id.button_open_wiki_3).setOnClickListener(this);
-        findViewById(R.id.button_open_wiki_4).setOnClickListener(this);
-        findViewById(R.id.button_open_wiki_5).setOnClickListener(this);
-        findViewById(R.id.button_open_wiki_6).setOnClickListener(this);
     }
 
     private void setUpAd() {
