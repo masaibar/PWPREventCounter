@@ -1,7 +1,7 @@
 package com.masaibar.eventbeforeaftercounter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by masaibar on 2016/03/05.
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class InputData implements Serializable {
 
     private HighSchool mHighSchool;
-    private ArrayList<EventCharacter> mEventCharacters;
+    private List<EventCharacter> mEventCharacters;
 
-    public InputData(HighSchool highSchool, ArrayList<EventCharacter> eventCharacters) {
+    public InputData(HighSchool highSchool, List<EventCharacter> eventCharacters) {
         mHighSchool = highSchool;
         mEventCharacters = eventCharacters;
     }
@@ -20,7 +20,7 @@ public class InputData implements Serializable {
         return mHighSchool;
     }
 
-    public ArrayList<EventCharacter> getEventCharacters() {
+    public List<EventCharacter> getEventCharacters() {
         return mEventCharacters;
     }
 

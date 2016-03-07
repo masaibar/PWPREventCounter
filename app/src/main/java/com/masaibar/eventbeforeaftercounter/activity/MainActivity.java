@@ -1,6 +1,5 @@
 package com.masaibar.eventbeforeaftercounter.activity;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -44,49 +43,44 @@ public class MainActivity extends AppCompatActivity
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
 
     private HighSchool mHighSchool;
-    private EventCharacter mEventCharacter1;
-    private EventCharacter mEventCharacter2;
-    private EventCharacter mEventCharacter3;
-    private EventCharacter mEventCharacter4;
-    private EventCharacter mEventCharacter5;
-    private EventCharacter mEventCharacter6;
+    private List<EventCharacter> mEventCharacterList = new ArrayList<>();
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         int spinnerId = parent.getId();
         switch (spinnerId) {
             case R.id.spinner_high_school:
-                mHighSchool = (HighSchool) getSelectedItem(spinnerId);
+                mHighSchool = getSelectedHighSchool(spinnerId);
                 break;
 
             case R.id.spinner_character1:
-                mEventCharacter1 = (EventCharacter) getSelectedItem(spinnerId);
-                ((TextView) findViewById(R.id.text_role_1)).setText(mEventCharacter1.getRole());
+                mEventCharacterList.set(0, getSelectedEventCharacter(spinnerId));
+                ((TextView) findViewById(R.id.text_role_1)).setText(mEventCharacterList.get(0).getRole());
                 break;
 
             case R.id.spinner_character2:
-                mEventCharacter2 = (EventCharacter) getSelectedItem(spinnerId);
-                ((TextView) findViewById(R.id.text_role_2)).setText(mEventCharacter2.getRole());
+                mEventCharacterList.set(1, getSelectedEventCharacter(spinnerId));
+                ((TextView) findViewById(R.id.text_role_2)).setText(mEventCharacterList.get(1).getRole());
                 break;
 
             case R.id.spinner_character3:
-                mEventCharacter3 = (EventCharacter) getSelectedItem(spinnerId);
-                ((TextView) findViewById(R.id.text_role_3)).setText(mEventCharacter3.getRole());
+                mEventCharacterList.set(2, getSelectedEventCharacter(spinnerId));
+                ((TextView) findViewById(R.id.text_role_3)).setText(mEventCharacterList.get(2).getRole());
                 break;
 
             case R.id.spinner_character4:
-                mEventCharacter4 = (EventCharacter) getSelectedItem(spinnerId);
-                ((TextView) findViewById(R.id.text_role_4)).setText(mEventCharacter4.getRole());
+                mEventCharacterList.set(3, getSelectedEventCharacter(spinnerId));
+                ((TextView) findViewById(R.id.text_role_4)).setText(mEventCharacterList.get(3).getRole());
                 break;
 
             case R.id.spinner_character5:
-                mEventCharacter5 = (EventCharacter) getSelectedItem(spinnerId);
-                ((TextView) findViewById(R.id.text_role_5)).setText(mEventCharacter5.getRole());
+                mEventCharacterList.set(4, getSelectedEventCharacter(spinnerId));
+                ((TextView) findViewById(R.id.text_role_5)).setText(mEventCharacterList.get(4).getRole());
                 break;
 
             case R.id.spinner_character6:
-                mEventCharacter6 = (EventCharacter) getSelectedItem(spinnerId);
-                ((TextView) findViewById(R.id.text_role_6)).setText(mEventCharacter6.getRole());
+                mEventCharacterList.set(5, getSelectedEventCharacter(spinnerId));
+                ((TextView) findViewById(R.id.text_role_6)).setText(mEventCharacterList.get(5).getRole());
                 break;
 
             default:
@@ -106,8 +100,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setUpAd();
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -117,9 +109,23 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        new GetJSONAsyncTask(JSON_URL, this).execute();
+        setUpAd();
 
-        setUpSpinners();
+        Spinner highSchoolSpinner = (Spinner) findViewById(R.id.spinner_high_school);
+        highSchoolSpinner.setOnItemSelectedListener(this);
+
+        List<Spinner> eventCharacterSpinners = getEventCharacterSpinners();
+        for (Spinner spinner : eventCharacterSpinners) {
+            spinner.setOnItemSelectedListener(this);
+            mEventCharacterList.add(null);
+        }
+
+        new GetJSONAsyncTask(
+                JSON_URL,
+                (Spinner) findViewById(R.id.spinner_high_school),
+                eventCharacterSpinners
+        ).execute();
+
         findViewById(R.id.button_judge).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,21 +145,16 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private void setUpSpinners() {
-        Spinner spinnerHS = (Spinner) findViewById(R.id.spinner_high_school);
-        spinnerHS.setOnItemSelectedListener(this);
-        Spinner spinnerEC1 = (Spinner) findViewById(R.id.spinner_character1);
-        spinnerEC1.setOnItemSelectedListener(this);
-        Spinner spinnerEC2 = (Spinner) findViewById(R.id.spinner_character2);
-        spinnerEC2.setOnItemSelectedListener(this);
-        Spinner spinnerEC3 = (Spinner) findViewById(R.id.spinner_character3);
-        spinnerEC3.setOnItemSelectedListener(this);
-        Spinner spinnerEC4 = (Spinner) findViewById(R.id.spinner_character4);
-        spinnerEC4.setOnItemSelectedListener(this);
-        Spinner spinnerEC5 = (Spinner) findViewById(R.id.spinner_character5);
-        spinnerEC5.setOnItemSelectedListener(this);
-        Spinner spinnerEC6 = (Spinner) findViewById(R.id.spinner_character6);
-        spinnerEC6.setOnItemSelectedListener(this);
+    private List<Spinner> getEventCharacterSpinners() {
+        return new ArrayList<Spinner>() {
+            {
+                add((Spinner) findViewById(R.id.spinner_character1));
+                add((Spinner) findViewById(R.id.spinner_character2));
+                add((Spinner) findViewById(R.id.spinner_character3));
+                add((Spinner) findViewById(R.id.spinner_character4));
+                add((Spinner) findViewById(R.id.spinner_character5));
+                add((Spinner) findViewById(R.id.spinner_character6));
+            }};
     }
 
     private void setUpAd() {
@@ -163,8 +164,19 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * 渡したidのSpinnerで選択されているObjectを返す、呼び出し元でキャストして使う
+     * 渡したidのSpinnerで選択されているEventCharacterを返す
      */
+    private EventCharacter getSelectedEventCharacter(int id) {
+        return (EventCharacter) getSelectedItem(id);
+    }
+
+    /**
+     * 渡したidのSpinnerで選択されているHighSchoolを返す
+     */
+    private HighSchool getSelectedHighSchool(int id) {
+        return (HighSchool) getSelectedItem(id);
+    }
+
     private Object getSelectedItem(int id) {
         return ((Spinner) findViewById(id)).getSelectedItem();
     }
@@ -175,15 +187,12 @@ public class MainActivity extends AppCompatActivity
      * @return true/false
      */
     private boolean hasDuplicatedCharacters() {
-
-        ArrayList<EventCharacter> eventCharacters = getEventCharcters();
-
-        for (int i = 0; i < eventCharacters.size(); i++) {
-            for (int j = 0; j < eventCharacters.size(); j++) {
+        for (int i = 0; i < mEventCharacterList.size(); i++) {
+            for (int j = 0; j < mEventCharacterList.size(); j++) {
                 if (i == j) {
                     continue;
                 }
-                if (eventCharacters.get(i).equals(eventCharacters.get(j))) {
+                if (mEventCharacterList.get(i).equals(mEventCharacterList.get(j))) {
                     return true;
                 }
             }
@@ -193,20 +202,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private InputData getInputData() {
-        return new InputData(mHighSchool, getEventCharcters());
-    }
-
-    private ArrayList<EventCharacter> getEventCharcters() {
-
-        ArrayList<EventCharacter> eventCharacters = new ArrayList<>();
-        eventCharacters.add(mEventCharacter1);
-        eventCharacters.add(mEventCharacter2);
-        eventCharacters.add(mEventCharacter3);
-        eventCharacters.add(mEventCharacter4);
-        eventCharacters.add(mEventCharacter5);
-        eventCharacters.add(mEventCharacter6);
-
-        return eventCharacters;
+        return new InputData(mHighSchool, mEventCharacterList);
     }
 
     private void setHighSchoolSpinner(Spinner spinner, List<HighSchool> highSchools) {
@@ -225,22 +221,15 @@ public class MainActivity extends AppCompatActivity
 
         private String mUrl;
         private Spinner mSpinnerHighSchool;
-        private Spinner mSpinnerCharacter1;
-        private Spinner mSpinnerCharacter2;
-        private Spinner mSpinnerCharacter3;
-        private Spinner mSpinnerCharacter4;
-        private Spinner mSpinnerCharacter5;
-        private Spinner mSpinnerCharacter6;
+        private List<Spinner> mSpinnerEventCharacterList;
 
-        public GetJSONAsyncTask(String url, Activity activity) {
+        public GetJSONAsyncTask(
+                String url,
+                Spinner spinnerHighSchool,
+                List<Spinner> spinnerEventCharacterList) {
             mUrl = url;
-            mSpinnerHighSchool = (Spinner) activity.findViewById(R.id.spinner_high_school);
-            mSpinnerCharacter1 = (Spinner) activity.findViewById(R.id.spinner_character1);
-            mSpinnerCharacter2 = (Spinner) activity.findViewById(R.id.spinner_character2);
-            mSpinnerCharacter3 = (Spinner) activity.findViewById(R.id.spinner_character3);
-            mSpinnerCharacter4 = (Spinner) activity.findViewById(R.id.spinner_character4);
-            mSpinnerCharacter5 = (Spinner) activity.findViewById(R.id.spinner_character5);
-            mSpinnerCharacter6 = (Spinner) activity.findViewById(R.id.spinner_character6);
+            mSpinnerHighSchool = spinnerHighSchool;
+            mSpinnerEventCharacterList = spinnerEventCharacterList;
         }
 
         @Override
@@ -271,20 +260,17 @@ public class MainActivity extends AppCompatActivity
 
             DebugUtil.log("jsonString = %s", jsonString);
 
-            Gson gson = new Gson();
-            JSONData jsonData = gson.fromJson(jsonString, JSONData.class);
+            JSONData jsonData = new Gson().fromJson(jsonString, JSONData.class);
 
             //高校
             setHighSchoolSpinner(mSpinnerHighSchool, jsonData.getHighSchools());
 
             //イベントキャラクター
             List<EventCharacter> eventCharacters = jsonData.getEventCharacters();
-            setEventCharacterSpinner(mSpinnerCharacter1, eventCharacters);
-            setEventCharacterSpinner(mSpinnerCharacter2, eventCharacters);
-            setEventCharacterSpinner(mSpinnerCharacter3, eventCharacters);
-            setEventCharacterSpinner(mSpinnerCharacter4, eventCharacters);
-            setEventCharacterSpinner(mSpinnerCharacter5, eventCharacters);
-            setEventCharacterSpinner(mSpinnerCharacter6, eventCharacters);
+
+            for (Spinner spinner: mSpinnerEventCharacterList) {
+                setEventCharacterSpinner(spinner, eventCharacters);
+            }
         }
     }
 
