@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
 
         new GetJSONAsyncTask(
                 JSON_URL,
-                (Spinner) findViewById(R.id.spinner_high_school),
+                highSchoolSpinner,
                 eventCharacterSpinners
         ).execute();
 
