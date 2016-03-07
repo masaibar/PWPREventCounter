@@ -25,8 +25,8 @@ import com.masaibar.eventbeforeaftercounter.InputData;
 import com.masaibar.eventbeforeaftercounter.JSONData;
 import com.masaibar.eventbeforeaftercounter.R;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
-import com.masaibar.eventbeforeaftercounter.util.EventCharacterAdapter;
-import com.masaibar.eventbeforeaftercounter.util.HighSchoolAdapter;
+import com.masaibar.eventbeforeaftercounter.EventCharacterAdapter;
+import com.masaibar.eventbeforeaftercounter.HighSchoolAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;

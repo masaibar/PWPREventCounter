@@ -1,4 +1,4 @@
-package com.masaibar.eventbeforeaftercounter.util;
+package com.masaibar.eventbeforeaftercounter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.masaibar.eventbeforeaftercounter.EventCharacter;
 import com.masaibar.eventbeforeaftercounter.HighSchool;
 import com.masaibar.eventbeforeaftercounter.R;
 
@@ -16,9 +15,9 @@ import java.util.List;
 /**
  * Created by masaibar on 2016/02/28.
  */
-public class EventCharacterAdapter extends ArrayAdapter<EventCharacter>{
+public class HighSchoolAdapter extends ArrayAdapter<HighSchool>{
 
-    public EventCharacterAdapter(Context context, int resource, List<EventCharacter> objects) {
+    public HighSchoolAdapter(Context context, int resource, List<HighSchool> objects) {
         super(context, resource, objects);
     }
 
@@ -44,8 +43,8 @@ public class EventCharacterAdapter extends ArrayAdapter<EventCharacter>{
         TextView label = (TextView) convertView.findViewById(R.id.checked_text);
 
         if(label != null) {
-            EventCharacter ec = getItem(position);
-            label.setText(ec.getName());
+            HighSchool hs = getItem(position);
+            label.setText(hs.getName());
         }
 
         return convertView;
