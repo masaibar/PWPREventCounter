@@ -23,5 +23,6 @@
     <!--todo-->
     <!--http://androidstudio.hatenablog.com/entry/2014/07/21/170610-->
     <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="title_activity_check_result">CheckResultActivity</string>
 
 </resources>

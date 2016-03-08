@@ -133,13 +133,14 @@ public class MainActivity extends AppCompatActivity
                     if (hasDuplicatedCharacters()) {
                         //TODO strings.xml
                         Toast.makeText(MainActivity.this, "duplicated", Toast.LENGTH_SHORT).show();
-                        return;
+//                        return;
                     }
                     //結果暫定表示
                     final TextView textResult = (TextView) findViewById(R.id.text_result);
                     textResult.setText(getString(R.string.result_tmp, mHighSchool.getName(), mHighSchool.getBeforeEvents(), mHighSchool.getAfterEvents()));
 
-                    ResultActivity.start(getApplicationContext(), getInputData());
+//                    ResultActivity.start(getApplicationContext(), getInputData());
+                    CheckResultActivity.start(getApplicationContext(), null);
                 }
             }
         });
