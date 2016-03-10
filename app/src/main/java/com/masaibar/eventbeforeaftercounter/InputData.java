@@ -46,4 +46,8 @@ public class InputData implements Serializable {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return new Gson().fromJson(preferences.getString(PREF_KEY_INPUTDATA, null), InputData.class);
     }
+
+    public static boolean hasData(Context context) {
+        return read(context) != null;
+    }
 }
