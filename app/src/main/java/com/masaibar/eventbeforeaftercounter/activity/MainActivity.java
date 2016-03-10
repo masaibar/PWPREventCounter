@@ -117,19 +117,18 @@ public class MainActivity extends AppCompatActivity
         Spinner highSchoolSpinner = (Spinner) findViewById(ID_SPINNER_HIGH_SCHOOL);
         highSchoolSpinner.setOnItemSelectedListener(this);
 
-        List<Spinner> eventCharacterSpinners = getEventCharacterSpinners();
-        for (Spinner spinner : eventCharacterSpinners) {
-            spinner.setOnItemSelectedListener(this);
+        for (int spinnerId : ID_SPINNER_EVENT_CHARACTERS) {
+            ((Spinner)findViewById(spinnerId)).setOnItemSelectedListener(this);
         }
 
         new GetJSONAsyncTask(
                 JSON_URL,
                 highSchoolSpinner,
-                eventCharacterSpinners
+                getEventCharacterSpinnerList()
         ).execute();
     }
 
-    private List<Spinner> getEventCharacterSpinners() {
+    private List<Spinner> getEventCharacterSpinnerList() {
         List<Spinner> eventCharacterSpinnerList = new ArrayList<>();
         for (int id : ID_SPINNER_EVENT_CHARACTERS) {
             eventCharacterSpinnerList.add((Spinner) findViewById(id));
@@ -176,8 +175,10 @@ public class MainActivity extends AppCompatActivity
      */
     private List<EventCharacter> getEventCharacterList() {
         List<EventCharacter> eventCharacterList = new ArrayList<>();
-        for (Spinner spinner : getEventCharacterSpinners()) {
-            eventCharacterList.add((EventCharacter) spinner.getSelectedItem());
+        for (int spinnerId : ID_SPINNER_EVENT_CHARACTERS) {
+            eventCharacterList.add(
+                    (EventCharacter) ((Spinner) findViewById(spinnerId)).getSelectedItem()
+            );
         }
         return eventCharacterList;
     }
