@@ -98,7 +98,8 @@ public class MainActivity extends AppCompatActivity
                     final TextView textResult = (TextView) findViewById(R.id.text_result);
                     textResult.setText(getString(R.string.result_tmp, highSchool.getName(), highSchool.getBeforeEvents(), highSchool.getAfterEvents()));
 
-                    ResultActivity.start(getApplicationContext(), getInputData());
+                    getInputData().save(getApplicationContext());
+                    ResultActivity.start(getApplicationContext());
                 }
             }
         });

@@ -13,12 +13,9 @@ import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private static final String INPUT_DATA = "inputData";
-
-    public static void start(Context context, InputData inputData) {
+    public static void start(Context context) {
         Intent intent = new Intent(context, ResultActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(INPUT_DATA, inputData);
         context.startActivity(intent);
     }
 
@@ -29,13 +26,7 @@ public class ResultActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        if (intent == null) {
-            DebugUtil.log("Intent is null");
-            return;
-        }
-
-        InputData inputData = (InputData) getIntent().getSerializableExtra(INPUT_DATA);
+        InputData inputData = InputData.read(getApplicationContext());
         if (inputData == null) {
             DebugUtil.log("InputData is null");
             return;

@@ -1,5 +1,12 @@
 package com.masaibar.eventbeforeaftercounter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,23 +15,35 @@ import java.util.List;
  */
 public class InputData implements Serializable {
 
-    private HighSchool mHighSchool;
-    private List<EventCharacter> mEventCharacters;
+    private static final String PREF_KEY_INPUTDATA = "prefKeyInputData";
 
-    public InputData(HighSchool highSchool, List<EventCharacter> eventCharacters) {
+    private HighSchool mHighSchool;
+    private List<EventCharacter> mEventCharacterList;
+
+    public InputData(HighSchool highSchool, List<EventCharacter> eventCharacterList) {
         mHighSchool = highSchool;
-        mEventCharacters = eventCharacters;
+        mEventCharacterList = eventCharacterList;
     }
 
     public HighSchool getHighSchool() {
         return mHighSchool;
     }
 
-    public List<EventCharacter> getEventCharacters() {
-        return mEventCharacters;
+    public List<EventCharacter> getEventCharacterList() {
+        return mEventCharacterList;
     }
 
     public EventCharacter getEvemtCharacter(int index) {
-        return mEventCharacters.get(index);
+        return mEventCharacterList.get(index);
+    }
+
+    public boolean save(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.edit().putString(PREF_KEY_INPUTDATA, new Gson().toJson(this)).commit();
+    }
+
+    public static @Nullable InputData read(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return new Gson().fromJson(preferences.getString(PREF_KEY_INPUTDATA, null), InputData.class);
     }
 }
