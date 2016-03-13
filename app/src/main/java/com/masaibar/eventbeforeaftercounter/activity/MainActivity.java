@@ -123,8 +123,6 @@ public class MainActivity extends AppCompatActivity
         MenuItem resultMenuItem =
                 ((NavigationView) findViewById(R.id.nav_view)).getMenu().findItem(R.id.nav_result);
 
-        boolean hoge = InputData.hasData(getApplicationContext());
-        DebugUtil.log("result " + String.valueOf(hoge));
         resultMenuItem.setEnabled(InputData.hasData(getApplicationContext()));
     }
 
