@@ -47,7 +47,11 @@ public class InputData implements Serializable {
         return new Gson().fromJson(preferences.getString(PREF_KEY_INPUTDATA, null), InputData.class);
     }
 
+    /**
+     * 保存された結果があるかどうか返す
+     */
     public static boolean hasData(Context context) {
-        return read(context) != null;
+        SharedPreferences preferencesre = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferencesre.contains(PREF_KEY_INPUTDATA);
     }
 }

@@ -1,5 +1,6 @@
 package com.masaibar.eventbeforeaftercounter.activity;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -39,7 +40,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
+        implements AdapterView.OnItemSelectedListener {
 
     private static final String JSON_URL =
             "https://raw.githubusercontent.com/masaibar/PWPREventCounter/master/json/v0/sample.json";
@@ -79,7 +80,13 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                onNavigationSelected(menuItem);
+                return true;
+            }
+        });
 
         setUpAd();
         setUpSpinners();
@@ -105,6 +112,22 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        updateDrawerControls();
+    }
+
+    private void updateDrawerControls() {
+        MenuItem resultMenuItem =
+                ((NavigationView) findViewById(R.id.nav_view)).getMenu().findItem(R.id.nav_result);
+
+        boolean hoge = InputData.hasData(getApplicationContext());
+        DebugUtil.log("result " + String.valueOf(hoge));
+        resultMenuItem.setEnabled(InputData.hasData(getApplicationContext()));
+    }
+
     private void setUpAd() {
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -119,7 +142,7 @@ public class MainActivity extends AppCompatActivity
         highSchoolSpinner.setOnItemSelectedListener(this);
 
         for (int spinnerId : ID_SPINNER_EVENT_CHARACTERS) {
-            ((Spinner)findViewById(spinnerId)).setOnItemSelectedListener(this);
+            ((Spinner) findViewById(spinnerId)).setOnItemSelectedListener(this);
         }
 
         new GetJSONAsyncTask(
@@ -288,28 +311,14 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+    private void onNavigationSelected(MenuItem menuItem) {
+        Context context = getApplicationContext();
+        switch (menuItem.getItemId()) {
+            case R.id.nav_result:
+                ResultActivity.start(context);
+                break;
+            default:
+                break;
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }
