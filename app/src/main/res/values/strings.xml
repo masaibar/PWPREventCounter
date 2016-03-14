@@ -30,4 +30,28 @@
     <!--http://androidstudio.hatenablog.com/entry/2014/07/21/170610-->
     <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
 
+    <string name="copyright_header">本アプリケーションは、以下のソフトウェアを含んでいます。</string>
+    <string name="copyright_gson">Google Gson\n\n
+        Copyright 2008 Google Inc.\n\n
+Licensed under the Apache License, Version 2.0 (the "License");\n
+you may not use this file except in compliance with the License.\n
+You may obtain a copy of the License at\n\n
+    http://www.apache.org/licenses/LICENSE-2.0\n\n
+Unless required by applicable law or agreed to in writing, software\n
+distributed under the License is distributed on an "AS IS" BASIS,\n
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
+See the License for the specific language governing permissions and\n
+limitations under the License.\n</string>
+    <string name="copyright_okhttp">OkHttp\n\n
+        Copyright 2016 Square, Inc.\n\n
+Licensed under the Apache License, Version 2.0 (the "License");\n
+you may not use this file except in compliance with the License.\n
+You may obtain a copy of the License at\n\n
+   http://www.apache.org/licenses/LICENSE-2.0\n\n
+Unless required by applicable law or agreed to in writing, software\n
+distributed under the License is distributed on an "AS IS" BASIS,\n
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
+See the License for the specific language governing permissions and\n
+limitations under the License.</string>
+
 </resources>
