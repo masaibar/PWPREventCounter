@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">EventBeforeAfterCounter</string>
 
+    <string name="result">判定結果</string>
+    <string name="copyright">著作権情報</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -17,6 +20,9 @@
     <string name="button_judge">判定する</string>
 
     <string name="limited_route">(期間限定ルート)</string>
+
+    <string name="drawer_item_result">前回の結果</string>
+    <string name="drawer_item_copyright">著作権情報</string>
 
     <string name="result_tmp">選択されているのは%1$sです。前イベント数%2$d、後イベント数%3$d</string>
 

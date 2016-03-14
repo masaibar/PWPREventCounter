@@ -315,6 +315,11 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_result:
                 ResultActivity.start(context);
                 break;
+
+            case R.id.nav_copyright:
+                CopyrightActivity.start(context);
+                break;
+
             default:
                 break;
         }
