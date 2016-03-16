@@ -7,8 +7,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-
     <string name="toast_back_pressed">もう一度押すと終了します。</string>
 
     <string name="main_high_school_name">高校名</string>

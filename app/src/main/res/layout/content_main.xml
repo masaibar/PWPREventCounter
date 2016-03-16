@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,8 +11,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context=".activity.MainActivity">
+
     <!--高校名-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,13 +22,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_high_school_name" />
+            android:text="@string/main_high_school_name"/>
 
         <Spinner
             android:id="@+id/spinner_high_school"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -42,13 +43,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_character1" />
+            android:text="@string/event_character1"/>
 
         <Spinner
             android:id="@+id/spinner_character1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -63,13 +64,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_character2" />
+            android:text="@string/event_character2"/>
 
         <Spinner
             android:id="@+id/spinner_character2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -84,13 +85,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_character3" />
+            android:text="@string/event_character3"/>
 
         <Spinner
             android:id="@+id/spinner_character3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -105,13 +106,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_character4" />
+            android:text="@string/event_character4"/>
 
         <Spinner
             android:id="@+id/spinner_character4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -126,13 +127,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_character5" />
+            android:text="@string/event_character5"/>
 
         <Spinner
             android:id="@+id/spinner_character5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -147,13 +148,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_character6" />
+            android:text="@string/event_character6"/>
 
         <Spinner
             android:id="@+id/spinner_character6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -162,13 +163,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/button_judge" />
+        android:text="@string/button_judge"/>
 
     <TextView
         android:id="@+id/text_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#66666666" />
+        android:background="#66666666"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -177,5 +178,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id_test"></com.google.android.gms.ads.AdView>
+        ads:adUnitId="@string/banner_ad_unit_id_test"/>
 </LinearLayout>
