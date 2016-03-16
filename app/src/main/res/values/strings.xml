@@ -9,6 +9,8 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="toast_back_pressed">もう一度押すと終了します。</string>
+
     <string name="main_high_school_name">高校名</string>
     <string name="event_character1">1人目</string>
     <string name="event_character2">2人目</string>

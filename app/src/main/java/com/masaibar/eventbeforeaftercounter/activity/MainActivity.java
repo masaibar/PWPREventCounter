@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity
             R.id.spinner_character4, R.id.spinner_character5, R.id.spinner_character6};
 
     private Map<Integer, Object> mSpinnerMap = new HashMap<>();
+    private Toast mToast;
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -283,6 +284,15 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if (mToast == null || !mToast.getView().isShown()) {
+                mToast = Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.toast_back_pressed),
+                        Toast.LENGTH_SHORT
+                );
+                mToast.show();
+                return;
+            }
             super.onBackPressed();
         }
     }
