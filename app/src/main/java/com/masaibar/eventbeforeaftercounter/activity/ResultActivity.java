@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.masaibar.eventbeforeaftercounter.HighSchool;
 import com.masaibar.eventbeforeaftercounter.InputData;
 import com.masaibar.eventbeforeaftercounter.R;
 import com.masaibar.eventbeforeaftercounter.util.DebugUtil;
@@ -32,6 +33,8 @@ public class ResultActivity extends AppCompatActivity {
             return;
         }
 
+        setResultTexts(inputData);
+
         String result = String.format("%s %s %s %s %s %s %s", inputData.getHighSchool(),
                 inputData.getEvemtCharacter(0), inputData.getEvemtCharacter(1),
                 inputData.getEvemtCharacter(2), inputData.getEvemtCharacter(3),
@@ -42,6 +45,18 @@ public class ResultActivity extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.result);
         textView.setText(result);
+    }
+
+    private void setResultTexts(InputData inputData) {
+        HighSchool hs = inputData.getHighSchool();
+        //◯◯高校空きイベント数
+        ((TextView) findViewById(R.id.text_high_school_header))
+                .setText(getString(R.string.high_school_header, hs.getName()));
+
+        //前◯/後◯
+        ((TextView) findViewById(R.id.text_highschool_events))
+                .setText(getString(R.string.high_school_events, hs.getBeforeEvents(), hs.getAfterEvents()));
+
     }
 
     @Override

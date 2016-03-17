@@ -7,8 +7,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!--終了確認用トースト-->
     <string name="toast_back_pressed">もう一度押すと終了します。</string>
 
+    <!--MainActivity-->
     <string name="main_high_school_name">高校名</string>
     <string name="event_character1">1人目</string>
     <string name="event_character2">2人目</string>
@@ -19,8 +21,11 @@
     <string name="button_open_wiki">Wikiを開く</string>
     <string name="button_judge">判定する</string>
 
-    <string name="limited_route">(期間限定ルート)</string>
+    <!--ResultActivity-->
+    <string name="high_school_header">%s空きイベント数</string>
+    <string name="high_school_events">前%1$d/後%2$d</string>
 
+    <!--ドロワー-->
     <string name="drawer_item_result">前回の結果</string>
     <string name="drawer_item_copyright">著作権情報</string>
 
