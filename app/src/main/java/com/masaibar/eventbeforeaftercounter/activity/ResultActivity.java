@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.masaibar.eventbeforeaftercounter.HighSchool;
 import com.masaibar.eventbeforeaftercounter.InputData;
 import com.masaibar.eventbeforeaftercounter.R;
@@ -26,6 +28,8 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        setUpAd();
 
         InputData inputData = InputData.read(getApplicationContext());
         if (inputData == null) {
@@ -67,5 +71,11 @@ public class ResultActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setUpAd() {
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }
