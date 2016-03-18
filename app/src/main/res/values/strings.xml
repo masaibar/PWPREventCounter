@@ -24,6 +24,12 @@
     <!--ResultActivity-->
     <string name="high_school_header">%s空きイベント数</string>
     <string name="high_school_events">前%1$d/後%2$d</string>
+    <string name="decks_header">このデッキのイベント数は</string>
+    <string name="decks_events">前%1$d/後%2$d</string>
+    <string name="events_per_week_header">空き一週あたりの発生イベント数は</string>
+    <string name="events_per_week_events">前%1$d/後%2$d</string>
+    <string name="result_header"></string>
+    <string name="result_events"></string>
 
     <!--ドロワー-->
     <string name="drawer_item_result">前回の結果</string>

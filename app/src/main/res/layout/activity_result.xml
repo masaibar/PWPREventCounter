@@ -28,25 +28,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="このデッキのイベント数は"/>
+        android:text="@string/decks_header"/>
 
     <TextView
         android:id="@+id/text_deck_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="前/後"/>
+        android:text="@string/decks_events"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="空き一週あたりの発生イベント数は"/>
+        android:text="@string/events_per_week_header"/>
 
     <TextView
         android:id="@+id/text_events_per_week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="前/後"/>
+        android:text="@string/events_per_week_events"/>
 
     <TextView
         android:id="@+id/text_result_overview"
