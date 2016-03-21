@@ -36,8 +36,8 @@
         <TextView
             android:id="@+id/text_deck_total"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/decks_events"/>
+            android:layout_height="wrap_content"/>
+            <!--android:text="@string/decks_events"/>-->
 
         <TextView
             android:layout_width="wrap_content"

@@ -59,9 +59,34 @@ public class ResultActivity extends AppCompatActivity {
 
         //前◯/後◯
         ((TextView) findViewById(R.id.text_highschool_events))
-                .setText(getString(R.string.high_school_events, hs.getBeforeEvents(), hs.getAfterEvents()));
+                .setText(
+                        getString(R.string.before_events, hs.getBeforeEvents()) +
+                                getString(R.string.slash) +
+                                getString(R.string.after_events, hs.getAfterEvents())
+                );
 
 
+        //このデッキのイベント数は前◯/後◯
+        ((TextView) findViewById(R.id.text_deck_total))
+                .setText(getDecksTotal(inputData));
+
+        //空き一周あたりの発生イベント数は
+
+    }
+
+    private String getDecksTotal(InputData inputData) {
+        StringBuilder result = new StringBuilder();
+        result.append(getString(R.string.before_events, inputData.getBeforeEvents()));
+        if (inputData.getMultiBeforeEvents() > 0) {
+            result.append(getString(R.string.multi_events, inputData.getMultiBeforeEvents()));
+        }
+        result.append(getString(R.string.slash));
+        result.append(getString(R.string.after_events, inputData.getAfterEvents()));
+        if (inputData.getMultiAfterEvents() > 0) {
+            result.append(getString(R.string.multi_events, inputData.getMultiAfterEvents()));
+        }
+
+        return result.toString();
     }
 
     @Override
