@@ -26,63 +26,72 @@
     {
       "name": "青葉春人（SR）",
       "rarity": "SR",
-      "before": 1,
-      "multi_before": 0,
+      "before": 5,
+      "multi_before": 1,
       "after": 0,
-      "multi_after": 1,
+      "multi_after": 0,
       "role": "球速"
     },
     {
       "name": "秋葉一真（SR）",
       "rarity": "SR",
-      "before": 1,
+      "before": 6,
       "multi_before": 0,
       "after": 0,
-      "multi_after": 1,
+      "multi_after": 0,
       "role": "打撃"
     },
     {
       "name": "明星雪華（SR）",
       "rarity": "SR",
-      "before": 1,
+      "before": 0,
       "multi_before": 0,
-      "after": 0,
+      "after": 3,
       "multi_after": 1,
       "role": "彼女"
     },
     {
       "name": "阿畑やすし（SR）",
       "rarity": "SR",
-      "before": 1,
+      "before": 6,
       "multi_before": 0,
       "after": 0,
-      "multi_after": 1,
+      "multi_after": 0,
       "role": "変化"
     },
     {
       "name": "天城隼（SR）",
       "rarity": "SR",
-      "before": 1,
+      "before": 0,
       "multi_before": 0,
-      "after": 0,
-      "multi_after": 1,
+      "after": 5,
+      "multi_after": 0,
       "role": "精神"
     },
     {
       "name": "嵐丸士朗（SR）",
       "rarity": "SR",
-      "before": 1,
+      "before": 4,
       "multi_before": 0,
       "after": 0,
-      "multi_after": 1,
+      "multi_after": 0,
       "role": "精神"
     },
     {
       "name": "有村佐治（SR）",
       "rarity": "SR",
-      "before": 1,
+      "before": 6,
       "multi_before": 0,
       "after": 0,
+      "multi_after": 0,
+      "role": "肩力"
+    },
+    {
+      "name": "春野千優（SR）",
+      "rarity": "SR",
+      "before": 0,
+      "multi_before": 0,
+      "after": 2,
       "multi_after": 1,
       "role": "肩力"
     }

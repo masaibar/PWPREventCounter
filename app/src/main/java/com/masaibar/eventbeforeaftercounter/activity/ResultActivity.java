@@ -61,6 +61,7 @@ public class ResultActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.text_highschool_events))
                 .setText(getString(R.string.high_school_events, hs.getBeforeEvents(), hs.getAfterEvents()));
 
+
     }
 
     @Override

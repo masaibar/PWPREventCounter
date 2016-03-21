@@ -26,6 +26,7 @@
     <string name="high_school_events">前%1$d/後%2$d</string>
     <string name="decks_header">このデッキのイベント数は</string>
     <string name="decks_events">前%1$d/後%2$d</string>
+    <string name="multi_events">+(複)×%d</string>
     <string name="events_per_week_header">空き一週あたりの発生イベント数は</string>
     <string name="events_per_week_events">前%1$d/後%2$d</string>
     <string name="result_header"></string>
